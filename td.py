@@ -30,6 +30,7 @@ class TransmissionDropbox(object):
         process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         value = process.wait()
         std_out, std_err = process.communicate()
+        self.log('STDOUT: %s' % std_out, 'debug')
         if value != 0:
             self.log(std_err, 'error')
         return value, std_out
